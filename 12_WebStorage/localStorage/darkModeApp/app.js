@@ -22,7 +22,16 @@ const applySavedTheme = () => {
   if (savedTheme === "dark") {
     document.body.classList.add("dark-mode");
     toggleButton.textContent = "Enable light mode";
+  } else {
+    document.body.classList.remove("dark-mode");
+    toggleButton.textContent = "Enable dark mode";
   }
 };
 
 applySavedTheme();
+
+window.addEventListener("storage", (e) => {
+  if (e.key === "theme") {
+    applySavedTheme();
+  }
+});
